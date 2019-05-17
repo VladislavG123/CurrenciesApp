@@ -1,0 +1,41 @@
+﻿<Window x:Class="CurrenciesApp.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CurrenciesApp"
+        mc:Ignorable="d"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+     TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+     TextElement.FontWeight="Regular"
+     TextElement.FontSize="13"
+     TextOptions.TextFormattingMode="Ideal"
+     TextOptions.TextRenderingMode="Auto"
+     Background="{DynamicResource MaterialDesignPaper}"
+     FontFamily="{DynamicResource MaterialDesignFont}"
+        Title="MainWindow" Height="450" Width="344" MinHeight="250" MinWidth="344">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="4*"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+
+        <DataGrid Name="dataGrid" AutoGenerateColumns="False" Foreground="#FF673AB7">
+            <DataGrid.Columns>
+                <DataGridTextColumn IsReadOnly="True" Header="Валюта" Binding="{Binding Title}"></DataGridTextColumn>
+                <DataGridTextColumn IsReadOnly="True" Header="Номинал" Binding="{Binding Description}"></DataGridTextColumn>
+                <DataGridTextColumn IsReadOnly="True" Header="Изменение" Binding="{Binding Change}"></DataGridTextColumn>
+                <DataGridTemplateColumn IsReadOnly="True" Header="">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <materialDesign:PackIcon Kind="{Binding Index}"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <Button Name="findButton" Content="Обновить"  Grid.Row="1" Click="findButtonClick" Background="#FFE0E0E0" Height="Auto" Foreground="#FF673AB7"/>
+
+    </Grid>
+</Window>
